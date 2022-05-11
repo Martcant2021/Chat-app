@@ -11,16 +11,9 @@ router = APIRouter()
 
 @router.get('/')
 
-async def get():
+async def home():
     return HTMLResponse(html.html)
 
-
-# @router.websocket("/ws")
-# async def websocket_endpoint(websocket: WebSocket):
-#     await websocket.accept()
-#     while True:
-#             data = await websocket.receive_text()
-#             await websocket.send_text(f"your message: {data}")
 
 
 @router.websocket("/ws/{client_id}")
@@ -29,7 +22,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id:int):
     try:
         while True:
             data = await websocket.receive_text()
-            await manager.send_personal_message(f"your message: {data}", websocket)
+            #await manager.send_personal_message(f"your message: {data}", websocket)
             await manager.broadcast(f"client: # {client_id} wrote: {data}")
 
     except WebSocketDisconnect:

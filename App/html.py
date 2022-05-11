@@ -17,20 +17,13 @@ html = """
                 <button>Send</button>
             </form>
         </div>
-        
-        <div style="border-radius: 11px;
-    padding: 3px;
-    margin: 2px;
-    box-shadow: 0px 0px 37px 9px #061d10;
-    width: 22rem;
-    left: 38%;
-    position: relative;
-    margin-top: 35px;
-    display: flex;">
 
+        <section style="width: 100%;display: flex;flex-direction: column;gap: 20px;justify-content: center;align-items: center;">
+        <div style="border-radius: 11px;padding: 2px;box-shadow: 0px 0px 37px 9px #061D10;width: 22rem;margin-top: 2rem;">
             <ul id='messages'>
             </ul>
         </div>
+        </section>
 
         <script>
             var client_id = Date.now()
