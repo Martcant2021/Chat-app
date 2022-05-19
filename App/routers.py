@@ -1,4 +1,5 @@
 
+import json
 from fastapi import APIRouter, WebSocketDisconnect, WebSocket
 from fastapi.responses import HTMLResponse
 import html
@@ -23,8 +24,15 @@ async def websocket_endpoint(websocket: WebSocket, client_id:int):
         while True:
             data = await websocket.receive_text()
             #await manager.send_personal_message(f"your message: {data}", websocket)
-            await manager.broadcast(f"client: # {client_id} wrote: {data}")
+            message = {"client_id":client_id, "message":data}
+            #await manager.broadcast(f"client: # {client_id} wrote: {data}")
+            await manager.broadcast(json.dumps(message))
+
 
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        await manager.broadcast(f"#{client_id} left the chat")
+        message = {"client_id":client_id, "message":"Left the chat"}
+
+        await manager.broadcast(json.dumps(message))
+
+        #await manager.broadcast(f"#{client_id} left the chat")

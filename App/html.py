@@ -3,10 +3,8 @@
 html = """
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Chat App</title>
-    </head>
-    <body style="background-color: #08AEEA; background-image: linear-gradient(63deg, #08AEEA 0%, #089e59 100%);">
+
+    <body ">
         <h1 class="p-2 m-2" style="text-align: center;">Chat Martapp</h1>
         <h2 style="text-align: center;padding: 2px;margin: 10px;">Your ID: <span id="ws-id"></span></h2>
 
@@ -28,7 +26,7 @@ html = """
         <script>
             var client_id = Date.now()
             document.querySelector("#ws-id").textContent = client_id;
-            var ws = new WebSocket(`ws://localhost:8000/ws/${client_id}`);
+            
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages')
                 var message = document.createElement('li')
@@ -43,6 +41,6 @@ html = """
                 event.preventDefault()
             }
         </script>
-    </body>
+    
 </html>
 """
