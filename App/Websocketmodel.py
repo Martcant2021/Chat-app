@@ -4,7 +4,7 @@ from fastapi import WebSocket
 
 
 
-# manager class with the functionalities to send msg
+# manager class with chat functionalities 
 
 class ConectionManager:
 
