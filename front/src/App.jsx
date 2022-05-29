@@ -17,28 +17,21 @@ function App() {
 
   useEffect(()=> {
     const ws = new WebSocket(`ws://localhost:8000/ws/${clientId}` )
-    ws.onopen= (e) => {ws.send("connect")};
+    ws.onopen= () => {ws.send("connect")};
 
     ws.onmessage = (e) =>{ const message = JSON.parse(e.data);
-      setMessages([...messages, message]);
-    }
-    ws.onclose = () =>{
-        ws.close()
+      setMessages([messages, message]);
     }
 
     setWebSockets(ws);
-    return () =>{
-      ws.close()
-    }
 
 
-
-  }, [message, messages]);
+  },[message,messages]);
 
   const sendMessage = () =>{
     webSockets.send(message);
-    webSockets.onmessage = (e) =>{
-      const message = JSON.parse(e.data);
+    webSockets.onmessage = (event) =>{
+      const message = JSON.parse(event.data);
       setMessages([...messages, message])
 
     };
@@ -62,7 +55,7 @@ function App() {
                   <div key={index} className='App-my-msg-container' >
                     <div className='App-my-messages'>
                       <p className='App-id-client'>client id: {clientId}</p>
-                      <p className='App-message'>{message}</p>
+                      <p className='App-message'>{value.message}</p>
                     </div>
                   </div>
                 );
@@ -71,22 +64,21 @@ function App() {
                   <div key={index} className='App-msg-other-container' >
                   <div className='other-messages'>
                     <p className='App-id-client'>client id:{clientId}</p>
-                    <p className='App-message'>{message}</p>
+                    <p className='App-message'>{value.message}</p>
                   </div>
                 </div>
                 );
               }
             })}
+          </div>
+        </div>
+        <div className='App-sendMsg' >
+              <input type="text"  className='App-input' placeholder='write your message' onChange= {(event) => setMessage(event.target.value)}  value={message}/>
+              <button type="submit" className='App-send' onClick={sendMessage}  ><ion-icon name="send-sharp"></ion-icon></button>
         </div>
 
-      </div>
-
-
       </section>
-      <div className='App-sendMsg' >
-              <input type="text"  className='App-input' autoComplete='off' placeholder='write your message' onInput= {(e) => setMessage(e.target.value)} value={message}/>
-              <button type="submit" className='App-send' onClick={sendMessage}  ><ion-icon name="send-sharp"></ion-icon></button>
-          </div>
+
     </div>
   );
 }

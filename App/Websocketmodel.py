@@ -6,8 +6,8 @@ from fastapi import WebSocket
 
 class ConectionManager:
 
-    def __init__(self) -> None:
-        self.active_conections: List[WebSocket]= []
+    def __init__(self) :
+        self.active_conections: List[WebSocket, str]= []
 
     async def connect(self, websocket:WebSocket):
         await websocket.accept()
@@ -16,8 +16,8 @@ class ConectionManager:
     def disconnect(self, websocket:WebSocket):
         self.active_conections.remove(websocket)
 
-    async def send_personal_message(self, message: str, websocket:WebSocket):
-        await websocket.send_text(message)
+    # async def send_personal_message(self, message: str, websocket:WebSocket):
+    #     await websocket.send_text(message)
 
     async def broadcast(self, message:str):
         for connection in self.active_conections:

@@ -33,8 +33,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id:int):
 
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        msg = "Left the chat"
-        message = {"clientId":client_id, "message":msg}
+        message = {"clientId":client_id, "message":"Left the chat"}
         await manager.broadcast(json.dumps(message))
 
         #await manager.broadcast(f"#{client_id} left the chat")
