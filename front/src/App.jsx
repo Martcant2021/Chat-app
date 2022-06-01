@@ -3,7 +3,6 @@ import React, { useEffect, useState} from "react";
 
 
 
-// El error parece ser que cada ves que envio mensaje se actualiza y por tanto se borran los msg
 
 
 function App() {
@@ -17,25 +16,27 @@ function App() {
 
   useEffect(()=> {
     const ws = new WebSocket(`ws://localhost:8000/ws/${clientId}` )
-    ws.onopen= () => {ws.send("connect")};
+    ws.onopen= (e) => {console.log("connect to server")};
+    ws.onclose = () => {console.error('Please try again later.')}
 
     ws.onmessage = (e) =>{ const message = JSON.parse(e.data);
-      setMessages([messages, message]);
+      setMessages([...messages, message]);
     }
 
     setWebSockets(ws);
+  },[messages]);
 
 
-  },[message,messages]);
 
-  const sendMessage = () =>{
+
+  const sendMessage = (event) =>{
+    event.preventDefault();
     webSockets.send(message);
-    webSockets.onmessage = (event) =>{
-      const message = JSON.parse(event.data);
-      setMessages([...messages, message])
-
+    webSockets.onmessage =  (e) => {
+      const message = JSON.parse(e.data)
+      setMessages([...messages, message]);
     };
-    setMessage([])
+    setMessage([]);
   };
 
   return (
@@ -54,7 +55,7 @@ function App() {
                 return(
                   <div key={index} className='App-my-msg-container' >
                     <div className='App-my-messages'>
-                      <p className='App-id-client'>client id: {clientId}</p>
+                      <p className='App-id-client'>client id: {value.clientId}</p>
                       <p className='App-message'>{value.message}</p>
                     </div>
                   </div>
@@ -63,7 +64,7 @@ function App() {
                 return(
                   <div key={index} className='App-msg-other-container' >
                   <div className='other-messages'>
-                    <p className='App-id-client'>client id:{clientId}</p>
+                    <p className='App-id-client'>client id:{value.clientId}</p>
                     <p className='App-message'>{value.message}</p>
                   </div>
                 </div>
@@ -72,10 +73,10 @@ function App() {
             })}
           </div>
         </div>
-        <div className='App-sendMsg' >
-              <input type="text"  className='App-input' placeholder='write your message' onChange= {(event) => setMessage(event.target.value)}  value={message}/>
-              <button type="submit" className='App-send' onClick={sendMessage}  ><ion-icon name="send-sharp"></ion-icon></button>
-        </div>
+        <form className='App-sendMsg' onSubmit={sendMessage} >
+              <input type="text"  className='App-input' placeholder='write your message'  onChange={(event) => setMessage(event.target.value)} value={message}/>
+              <button type="submit" className='App-send' ><ion-icon name="send-sharp"></ion-icon></button>
+        </form>
 
       </section>
 

@@ -125,27 +125,25 @@
 
 .App-input{
   display: inline-block;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+
   width: 13em;
   height: 15px;
   margin-left: 5px ;
   padding: 8px 45px 8px 25px;
-  border-top: 6px solid rgba(109,124,107,0.66);
+  /* border-top: 6px solid rgba(109,124,107,0.66);
   border-right: 4px solid rgba(109,124,107,0.66);
   border-bottom: 4px solid rgba(109,124,107,0.66);
-  border-left: 6px solid rgba(109,124,107,0.66);
-  -webkit-border-radius: 14px;
-  border-radius: 14px;
+  border-left: 6px solid rgba(109,124,107,0.66); */
+  /* -webkit-border-radius: 14px; */
+  border-radius: 11px;
   font: normal 15px/normal Arial, Helvetica, sans-serif;
   color: rgba(0,0,0,1);
   -o-text-overflow: clip;
   text-overflow: clip;
-  background: rgba(201,219,204,1);
-  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+  background: rgba(214, 219, 214, 0.66);
+  /* -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
   box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
-  text-shadow: 1px 1px 0 rgba(66,50,50,0.66) ;
+  text-shadow: 1px 1px 0 rgba(66,50,50,0.66) ; */
 }
 
 .App-send{
@@ -158,17 +156,10 @@
   cursor: pointer;
   padding: 8px 15px 5px 15px;
   margin-left: 10px;
-  border-top: 6px solid rgba(109,124,107,0.66);
-  border-right: 4px solid rgba(109,124,107,0.66);
-  border-bottom: 4px solid rgba(109,124,107,0.66);
-  border-left: 6px solid rgba(109,124,107,0.66);
-  -webkit-border-radius: 16px;
   border-radius: 16px;
   color: rgb(0, 0, 0);
-  -o-text-overflow: clip;
-  text-overflow: clip;
   background: rgba(26,237,106,0.47);
   -webkit-box-shadow: 0 0 0 0 rgba(51,27,27,0.72) inset;
-  box-shadow: 0 0 0 0 rgba(51,27,27,0.72) inset;
+  box-shadow: 0 0 0 0 rgba(136, 136, 136, 0.72) inset;
   text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
 }

@@ -19,10 +19,17 @@ async def home():
     return "hola"
 
 
-# router to call the manager class
+
 @router.websocket("/ws/{client_id}")
+
 async def websocket_endpoint(websocket: WebSocket, client_id:int):
+    """
+    It receives a websocket and a client_id, connects the websocket to the manager, and then waits for
+    messages from the websocket. When it receives a message, it broadcasts it to all the other
+    websockets
+    """
     await manager.connect(websocket)
+    
     try:
         while True:
             data = await websocket.receive_text()
@@ -32,8 +39,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id:int):
             await manager.broadcast(json.dumps(message))
 
     except WebSocketDisconnect:
-        manager.disconnect(websocket)
-        message = {"clientId":client_id, "message":"Left the chat"}
-        await manager.broadcast(json.dumps(message))
-
+            manager.disconnect(websocket)
+            message = {"clientId":client_id, "message":"Left the chat"}
+            await manager.broadcast(json.dumps(message))
         #await manager.broadcast(f"#{client_id} left the chat")
