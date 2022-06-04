@@ -1,0 +1,161 @@
+body {
+  background-color: #08AEEA; 
+  background-image: linear-gradient(63deg, #08AEEA 0%, #089e59 100%);
+
+  height: 100vh;
+  scroll-behavior: smooth;
+
+}
+
+.App {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+.App-title {
+    text-align: center;
+}
+
+
+.App-layout {
+    background: #c5c5c5;
+    /* box-shadow: 0px 0px 37px 9px #000000; */
+    width: 22rem;
+    height: 26rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 5px  #225a2a;
+
+  }
+
+
+
+.App-chat-container {
+    display: grid;
+    grid:
+      "App-msgs-container" 20rem
+      "App-sendMsg" 3rem
+      / auto;
+      border-radius: 11px;
+      /* box-shadow:  0px 0px 10px 15px rgb(126,194,21); */
+      overflow-y:scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  }
+  .App-chat-container::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .App-chatInfo-container{
+    background-color: #4dc95d;
+    width: 22rem;
+    height: 2rem;
+    margin: auto;
+  }
+  
+
+.App-msgs-container{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 2px;
+  margin: 2px;
+  background-color: rgba(7, 7, 7, 0);
+
+
+}
+
+
+.App-my-msg-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+.App-my-messages {
+  color: rgb(204, 203, 203);
+  padding: 5px;
+  width: fit-content;
+  min-width: 100px;
+  max-width: 300px;
+  background-color: #225a2a ;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 9px;
+  border-radius: 11px;
+
+}
+
+.App-msg-other-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.other-messages {
+  color: rgb(184, 184, 184);
+  max-width: 300px;
+  padding: 5px;
+  width: fit-content;
+  background-color: #131416;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 9px;
+  border-radius: 11px;
+
+
+}
+.App-id-client{
+  font-size: 13px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.App-message{
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+
+.App-sendMsg{
+
+  display: block;
+  justify-content: center;
+}
+
+.App-input{
+
+  width: 14em;
+  height: 15px;
+  margin-left: 15px ;
+  padding: 8px 45px 8px 25px;
+  border-color: #031f03;
+  border-end-end-radius: 15px;
+}
+
+.App-send{
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 15px;
+  height: 22px;
+  cursor: pointer;
+  padding: 8px 15px 5px 15px;
+  margin-left: 10px;
+  border-radius: 16px;
+  border-color: #043f049f;
+  color: rgb(0, 0, 0);
+  background: rgb(26, 237, 107);
+  -webkit-box-shadow: 0 0 0 0 rgba(51,27,27,0.72) inset;
+  box-shadow: 0 0 0 0 rgba(136, 136, 136, 0.72) inset;
+  text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+}
