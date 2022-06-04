@@ -110,17 +110,12 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-<<<<<<< HEAD
-=======
 venv-chat/
->>>>>>> react-front
 
 # Spyder project settings
 .spyderproject
 .spyproject
 
-<<<<<<< HEAD
-=======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -146,7 +141,6 @@ yarn-debug.log*
 yarn-error.log*
 
 
->>>>>>> react-front
 # Rope project settings
 .ropeproject
 
@@ -162,8 +156,3 @@ dmypy.json
 .pyre/
 
 
-<<<<<<< HEAD
-=======
-idea de diseño.png
->>>>>>> react-front
-machete.txt
