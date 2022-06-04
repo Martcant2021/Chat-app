@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState} from "react";
 
 
-
+//   On Your Network:  http://192.168.1.10:3000
 
 
 function App() {
@@ -16,28 +16,38 @@ function App() {
 
   useEffect(()=> {
     const ws = new WebSocket(`ws://localhost:8000/ws/${clientId}` )
-    ws.onopen= (e) => {console.log("connect to server")};
-    ws.onclose = () => {console.error('Please try again later.')}
+    ws.onopen= (e) => {console.log("connect to server",e)};
+    ws.onclose = () => {console.log("unknown")}
 
+/* A function that is called when a message is received from the server. It parses the message and then
+adds it to the messages array. */
     ws.onmessage = (e) =>{ const message = JSON.parse(e.data);
+      
       setMessages([...messages, message]);
     }
 
     setWebSockets(ws);
+    return ()=> {ws.close();}
   },[messages]);
 
 
 
 
+ /*The sendMessage function is called when the user clicks the send button. It prevents the default
+ action of the event, sends the message to the server, and then sets the message to an empty string*/
+
   const sendMessage = (event) =>{
     event.preventDefault();
     webSockets.send(message);
+
     webSockets.onmessage =  (e) => {
       const message = JSON.parse(e.data)
       setMessages([...messages, message]);
     };
+
     setMessage([]);
   };
+
 
   return (
     <div className="App">
@@ -47,7 +57,6 @@ function App() {
      </div>
 
       <section className='App-layout'>
-        
         <div className='App-chat-container'>
           <div className='App-chat-info-container'>
             {messages.map ((value, index) =>{
@@ -74,8 +83,8 @@ function App() {
           </div>
         </div>
         <form className='App-sendMsg' onSubmit={sendMessage} >
-              <input type="text"  className='App-input' placeholder='write your message'  onChange={(event) => setMessage(event.target.value)} value={message}/>
-              <button type="submit" className='App-send' ><ion-icon name="send-sharp"></ion-icon></button>
+              <input type="text"  className='App-input' placeholder='write your message'  onChange={(event) => setMessage(event.target.value)} value={message} required/>
+              <button type="submit/text" className='App-send' ><ion-icon name="send-sharp"></ion-icon></button>
         </form>
 
       </section>
