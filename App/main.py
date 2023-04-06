@@ -1,22 +1,13 @@
 
 from fastapi import FastAPI
 import routers
-<<<<<<< HEAD
-=======
 from fastapi.middleware.cors import CORSMiddleware
->>>>>>> react-front
 
 
 
 app = FastAPI()
 
 
-<<<<<<< HEAD
-# @app.get('/')
-# async def home():
-#     return "welcome"
-
-=======
 # CORS Config
 origins = ["*"]
 
@@ -32,7 +23,6 @@ app.add_middleware(
 async def home():
     return "welcome"
 '''
->>>>>>> react-front
 
 
 app.include_router(routers.router)

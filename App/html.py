@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# provisorio hasta aprender react
-=======
->>>>>>> react-front
 
 html = """
 <!DOCTYPE html>
@@ -12,32 +8,18 @@ html = """
     <body style="background-color: #08AEEA; background-image: linear-gradient(63deg, #08AEEA 0%, #089e59 100%);">
         <h1 class="p-2 m-2" style="text-align: center;">Chat Martapp</h1>
         <h2 style="text-align: center;padding: 2px;margin: 10px;">Your ID: <span id="ws-id"></span></h2>
-<<<<<<< HEAD
-
         <div style="text-align: center;">
-
-=======
-        <div style="text-align: center;">
->>>>>>> react-front
             <form action="" onsubmit="sendMessage(event)">
                 <input type="text" id="messageText" autocomplete="off"/>
                 <button>Send</button>
             </form>
         </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> react-front
         <section style="width: 100%;display: flex;flex-direction: column;gap: 20px;justify-content: center;align-items: center;">
         <div style="border-radius: 11px;padding: 2px;box-shadow: 0px 0px 37px 9px #061D10;width: 22rem;margin-top: 2rem;">
             <ul id='messages'>
             </ul>
         </div>
         </section>
-<<<<<<< HEAD
-
-=======
->>>>>>> react-front
         <script>
             var client_id = Date.now()
             document.querySelector("#ws-id").textContent = client_id;
