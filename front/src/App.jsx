@@ -47,12 +47,12 @@ action of the event, sends the message to the server, and then sets the message 
 
     setMessage([]);
 
+    const AppChatContainer = document.querySelector('.App-chat-container')
+    AppChatContainer.scrollTop = AppChatContainer.scrollHeight;
+
 
 
   };
-
-    const AppChatContainer = document.querySelector('.App-chat-container')
-    AppChatContainer.scrollTop = AppChatContainer.scrollHeight;
 
 
 
